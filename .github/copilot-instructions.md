@@ -83,8 +83,8 @@ This plugin supports both macOS and Windows with platform-specific commands:
 - `open -a ScreenSaverEngine` - Opens the screensaver application
 
 ### Windows Commands
-- `rundll32.exe powrprof.dll,SetSuspendState 0,1,0` - Puts Windows to sleep
-- `scrnsave.scr /s` - Starts the Windows screensaver (path constructed using `process.env.SystemRoot` or `process.env.windir`)
+- `rundll32.exe powrprof.dll,SetSuspendState 0,1,0` - Puts Windows to sleep (parameters: Hibernate=0, ForceFlag=1, DisableWakeEvent=0)
+- `${windir}\\system32\\scrnsave.scr /s` - Starts the Windows screensaver (where `windir` is `process.env.SystemRoot || process.env.windir || "C:\\Windows"`)
 
 ### Platform Detection
 - Use `process.platform === "darwin"` to detect macOS
