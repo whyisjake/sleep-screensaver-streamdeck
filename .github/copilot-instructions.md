@@ -2,9 +2,9 @@
 
 ## Project Overview
 
-This is a Stream Deck plugin for macOS that provides two actions:
-1. **Sleep Action**: Puts the Mac to sleep using `pmset sleepnow`
-2. **Screensaver Action**: Starts the screensaver using `open -a ScreenSaverEngine`
+This is a cross-platform Stream Deck plugin for macOS and Windows that provides two actions:
+1. **Sleep Action**: Puts the computer to sleep (uses `pmset sleepnow` on macOS, `rundll32.exe powrprof.dll,SetSuspendState` on Windows)
+2. **Screensaver Action**: Starts the screensaver (uses `open -a ScreenSaverEngine` on macOS, `scrnsave.scr /s` on Windows)
 
 The plugin is built with TypeScript and uses the Elgato Stream Deck SDK.
 
@@ -14,7 +14,7 @@ The plugin is built with TypeScript and uses the Elgato Stream Deck SDK.
 - **Runtime**: Node.js
 - **Build Tool**: Rollup
 - **SDK**: @elgato/streamdeck v0.3.0
-- **Target Platform**: macOS only (uses macOS-specific commands)
+- **Target Platforms**: macOS 10.15+ and Windows 10+ (with platform-specific commands)
 
 ## Project Structure
 
@@ -56,12 +56,16 @@ The plugin is built with TypeScript and uses the Elgato Stream Deck SDK.
 - Use the `@action` decorator with a unique UUID
 - Implement `onKeyDown` for button press handling
 - Use `streamDeck.logger` for logging (info, warn, error)
+- Implement platform detection using `process.platform` to support both macOS and Windows
+- Use helper functions to return platform-specific commands
 
 ### Error Handling
 
 - Always handle errors from `exec` commands
 - Log errors using `streamDeck.logger.error()`
 - Log warnings for stderr output using `streamDeck.logger.warn()`
+- Wrap platform-specific command execution in try-catch blocks
+- Use `{ shell: true }` option with `exec` for Windows compatibility
 
 ### Code Style
 
@@ -70,13 +74,24 @@ The plugin is built with TypeScript and uses the Elgato Stream Deck SDK.
 - Use template literals for string interpolation
 - Prefer `const` over `let`
 
-## macOS Specifics
+## Platform-Specific Commands
 
-This plugin is macOS-only and uses system commands:
-- `pmset sleepnow` - Requires appropriate permissions to put the system to sleep
+This plugin supports both macOS and Windows with platform-specific commands:
+
+### macOS Commands
+- `pmset sleepnow` - Puts the Mac to sleep (requires appropriate permissions)
 - `open -a ScreenSaverEngine` - Opens the screensaver application
 
-When modifying or adding actions, ensure they use macOS-compatible commands.
+### Windows Commands
+- `rundll32.exe powrprof.dll,SetSuspendState 0,1,0` - Puts Windows to sleep
+- `scrnsave.scr /s` - Starts the Windows screensaver (path constructed using `process.env.SystemRoot` or `process.env.windir`)
+
+### Platform Detection
+- Use `process.platform === "darwin"` to detect macOS
+- Use `process.platform === "win32"` to detect Windows
+- Always throw an error for unsupported platforms
+
+When modifying or adding actions, ensure they implement platform-specific commands for both macOS and Windows.
 
 ## Stream Deck SDK Guidelines
 
@@ -89,11 +104,13 @@ When modifying or adding actions, ensure they use macOS-compatible commands.
 
 To add a new action:
 1. Create a new file in `src/actions/`
-2. Extend `SingletonAction` and use the `@action` decorator
-3. Implement `onKeyDown` method
-4. Register the action in `src/plugin.ts`
-5. Add corresponding icons to `com.whyisjake.sleep-screensaver.sdPlugin/imgs/actions/`
-6. Update the manifest.json if needed
+2. Create a helper function that returns platform-specific commands based on `process.platform`
+3. Extend `SingletonAction` and use the `@action` decorator
+4. Implement `onKeyDown` method with try-catch error handling
+5. Use `exec(command, { shell: true }, callback)` for cross-platform compatibility
+6. Register the action in `src/plugin.ts`
+7. Add corresponding icons to `com.whyisjake.sleep-screensaver.sdPlugin/imgs/actions/`
+8. Update the manifest.json if needed
 
 ## Dependencies
 
@@ -108,6 +125,7 @@ There is no automated test infrastructure in this project. Changes should be man
 1. Building the plugin with `npm run build`
 2. Linking it with `npm run link`
 3. Testing the actions on actual Stream Deck hardware or Stream Deck Mobile
+4. Testing on both macOS and Windows platforms when making cross-platform changes
 
 ## Notes for AI Assistants
 
@@ -115,4 +133,6 @@ There is no automated test infrastructure in this project. Changes should be man
 - Maintain consistency with existing code style
 - Don't add unnecessary abstractions or complexity
 - Test changes manually since there are no automated tests
-- Remember this is macOS-specific - don't suggest cross-platform alternatives unless explicitly requested
+- This plugin supports both macOS and Windows - always consider both platforms when making changes
+- Use platform detection (`process.platform`) and implement platform-specific command handlers
+- When suggesting Windows paths, use `process.env.SystemRoot` or `process.env.windir` instead of hardcoding paths
