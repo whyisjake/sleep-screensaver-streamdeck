@@ -21,7 +21,7 @@ export class SleepAction extends SingletonAction {
 
     try {
       const command = getSleepCommand();
-      exec(command, (error: Error | null, stdout: string, stderr: string) => {
+      exec(command, { shell: true }, (error: Error | null, stdout: string, stderr: string) => {
         if (error) {
           streamDeck.logger.error(`Sleep command failed: ${error.message}`);
           return;
