@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 960" width="1920" height="960">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+  </defs>
+  <rect width="1920" height="960" fill="url(#bg)"/>
+
+  <!-- Stars background -->
+  <circle cx="150" cy="120" r="3" fill="#ffffff" opacity="0.5"/>
+  <circle cx="300" cy="200" r="2" fill="#ffffff" opacity="0.4"/>
+  <circle cx="500" cy="100" r="2.5" fill="#ffffff" opacity="0.6"/>
+  <circle cx="1700" cy="150" r="3" fill="#ffffff" opacity="0.5"/>
+  <circle cx="1500" cy="80" r="2" fill="#ffffff" opacity="0.4"/>
+  <circle cx="1800" cy="250" r="2" fill="#ffffff" opacity="0.3"/>
+  <circle cx="200" cy="800" r="2" fill="#ffffff" opacity="0.4"/>
+  <circle cx="1600" cy="850" r="2.5" fill="#ffffff" opacity="0.5"/>
+
+  <!-- Sleep Button (Left) -->
+  <rect x="400" y="280" width="400" height="400" rx="40" fill="#2d2d44" stroke="#3d3d5c" stroke-width="4"/>
+  <path fill="#f0c420" d="M600 380a120 120 0 1 0 0 240 120 120 0 0 0 0-240zm0 217.5a97.5 97.5 0 0 1-22.5-192.3A105 105 0 0 0 649.8 500 97.5 97.5 0 0 1 600 597.5z"/>
+  <text x="600" y="740" font-family="SF Pro Display, -apple-system, Arial, sans-serif" font-size="48" fill="#ffffff" text-anchor="middle" font-weight="500">Sleep</text>
+
+  <!-- Screensaver Button (Right) -->
+  <rect x="1120" y="280" width="400" height="400" rx="40" fill="#2d2d44" stroke="#3d3d5c" stroke-width="4"/>
+  <rect x="1200" y="360" width="240" height="165" rx="12" fill="#0d1b2a" stroke="#4cc9f0" stroke-width="8"/>
+  <line x1="1320" y1="525" x2="1320" y2="570" stroke="#4cc9f0" stroke-width="8"/>
+  <line x1="1260" y1="570" x2="1380" y2="570" stroke="#4cc9f0" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="1280" cy="420" r="20" fill="#f72585"/>
+  <circle cx="1340" cy="460" r="16" fill="#7209b7"/>
+  <circle cx="1380" cy="420" r="12" fill="#4361ee"/>
+  <text x="1320" y="740" font-family="SF Pro Display, -apple-system, Arial, sans-serif" font-size="48" fill="#ffffff" text-anchor="middle" font-weight="500">Screensaver</text>
+
+  <!-- Title -->
+  <text x="960" y="150" font-family="SF Pro Display, -apple-system, Arial, sans-serif" font-size="72" fill="#ffffff" text-anchor="middle" font-weight="600">Sleep &amp; Screensaver</text>
+  <text x="960" y="220" font-family="SF Pro Display, -apple-system, Arial, sans-serif" font-size="36" fill="#888899" text-anchor="middle">One-tap controls for your Mac</text>
+
+  <!-- Subtitle -->
+  <text x="960" y="880" font-family="SF Pro Display, -apple-system, Arial, sans-serif" font-size="32" fill="#666677" text-anchor="middle">Stream Deck Plugin for macOS</text>
+</svg>

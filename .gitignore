@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+
+# Build output
+*.streamDeckPlugin
+
+# Logs
+*.log
+logs/
+
+# Source maps
+*.map
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Claude
+.claude/

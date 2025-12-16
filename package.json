@@ -1,0 +1,33 @@
+{
+  "name": "sleep-screensaver",
+  "version": "1.0.0",
+  "description": "Stream Deck plugin to put your Mac to sleep or start the screensaver",
+  "main": "com.whyisjake.sleep-screensaver.sdPlugin/bin/plugin.js",
+  "type": "module",
+  "scripts": {
+    "build": "rollup -c",
+    "watch": "rollup -c -w",
+    "link": "streamdeck link com.whyisjake.sleep-screensaver.sdPlugin"
+  },
+  "keywords": [
+    "streamdeck",
+    "elgato",
+    "macos",
+    "sleep",
+    "screensaver"
+  ],
+  "author": "whyisjake",
+  "license": "MIT",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^29.0.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@types/node": "^25.0.2",
+    "rollup": "^4.9.0",
+    "tslib": "^2.6.2",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@elgato/streamdeck": "^0.3.0"
+  }
+}

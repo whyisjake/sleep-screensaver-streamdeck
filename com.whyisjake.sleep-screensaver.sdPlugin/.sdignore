@@ -1,0 +1,15 @@
+# Development files
+*.map
+*.ts
+.DS_Store
+
+# Logs
+logs/
+*.log
+
+# Node modules dev dependencies (keep production deps)
+node_modules/.package-lock.json
+node_modules/.bin/
+
+# TypeScript build artifacts
+*.tsbuildinfo
