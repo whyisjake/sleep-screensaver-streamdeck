@@ -30,38 +30,68 @@ typeof SuppressedError === "function" ? SuppressedError : function (error, suppr
     return e.name = "SuppressedError", e.error = error, e.suppressed = suppressed, e;
 };
 
+function getSleepCommand() {
+    if (process.platform === "darwin") {
+        return "pmset sleepnow";
+    }
+    else if (process.platform === "win32") {
+        return "rundll32.exe powrprof.dll,SetSuspendState 0,1,0";
+    }
+    throw new Error(`Unsupported platform: ${process.platform}`);
+}
 let SleepAction = class SleepAction extends SingletonAction {
     async onKeyDown(ev) {
-        streamDeck.logger.info("Sleep action triggered");
-        exec("pmset sleepnow", (error, stdout, stderr) => {
-            if (error) {
-                streamDeck.logger.error(`Sleep command failed: ${error.message}`);
-                return;
-            }
-            if (stderr) {
-                streamDeck.logger.warn(`Sleep command stderr: ${stderr}`);
-            }
-            streamDeck.logger.info("Sleep command executed successfully");
-        });
+        streamDeck.logger.info(`Sleep action triggered on ${process.platform}`);
+        try {
+            const command = getSleepCommand();
+            exec(command, (error, stdout, stderr) => {
+                if (error) {
+                    streamDeck.logger.error(`Sleep command failed: ${error.message}`);
+                    return;
+                }
+                if (stderr) {
+                    streamDeck.logger.warn(`Sleep command stderr: ${stderr}`);
+                }
+                streamDeck.logger.info("Sleep command executed successfully");
+            });
+        }
+        catch (e) {
+            streamDeck.logger.error(`Sleep action error: ${e}`);
+        }
     }
 };
 SleepAction = __decorate([
     action({ UUID: "com.whyisjake.sleep-screensaver.sleep" })
 ], SleepAction);
 
+function getScreensaverCommand() {
+    if (process.platform === "darwin") {
+        return "open -a ScreenSaverEngine";
+    }
+    else if (process.platform === "win32") {
+        return "%windir%\\system32\\scrnsave.scr /s";
+    }
+    throw new Error(`Unsupported platform: ${process.platform}`);
+}
 let ScreensaverAction = class ScreensaverAction extends SingletonAction {
     async onKeyDown(ev) {
-        streamDeck.logger.info("Screensaver action triggered");
-        exec("open -a ScreenSaverEngine", (error, stdout, stderr) => {
-            if (error) {
-                streamDeck.logger.error(`Screensaver command failed: ${error.message}`);
-                return;
-            }
-            if (stderr) {
-                streamDeck.logger.warn(`Screensaver command stderr: ${stderr}`);
-            }
-            streamDeck.logger.info("Screensaver command executed successfully");
-        });
+        streamDeck.logger.info(`Screensaver action triggered on ${process.platform}`);
+        try {
+            const command = getScreensaverCommand();
+            exec(command, { shell: true }, (error, stdout, stderr) => {
+                if (error) {
+                    streamDeck.logger.error(`Screensaver command failed: ${error.message}`);
+                    return;
+                }
+                if (stderr) {
+                    streamDeck.logger.warn(`Screensaver command stderr: ${stderr}`);
+                }
+                streamDeck.logger.info("Screensaver command executed successfully");
+            });
+        }
+        catch (e) {
+            streamDeck.logger.error(`Screensaver action error: ${e}`);
+        }
     }
 };
 ScreensaverAction = __decorate([

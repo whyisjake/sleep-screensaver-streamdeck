@@ -3,7 +3,7 @@
 	"Name": "Sleep & Screensaver",
 	"Version": "1.0.0.0",
 	"Author": "whyisjake",
-	"Description": "Put your Mac to sleep or start the screensaver with one button press. Perfect for quickly securing your workstation or activating your screensaver with a single tap.",
+	"Description": "Put your computer to sleep or start the screensaver with one button press. Perfect for quickly securing your workstation or activating your screensaver with a single tap. Works on macOS and Windows.",
 	"Icon": "imgs/plugin",
 	"CodePath": "bin/plugin.js",
 	"SDKVersion": 3,
@@ -14,6 +14,10 @@
 		{
 			"Platform": "mac",
 			"MinimumVersion": "10.15"
+		},
+		{
+			"Platform": "windows",
+			"MinimumVersion": "10"
 		}
 	],
 	"Nodejs": {
@@ -26,7 +30,7 @@
 			"UUID": "com.whyisjake.sleep-screensaver.sleep",
 			"Name": "Sleep",
 			"Icon": "imgs/actions/sleep",
-			"Tooltip": "Put your Mac to sleep",
+			"Tooltip": "Put your computer to sleep",
 			"Controllers": [
 				"Keypad"
 			],
