@@ -3,7 +3,7 @@
 ## Project Overview
 
 This is a cross-platform Stream Deck plugin for macOS and Windows that provides two actions:
-1. **Sleep Action**: Puts the computer to sleep (uses `pmset sleepnow` on macOS, `rundll32.exe powrprof.dll,SetSuspendState` on Windows)
+1. **Sleep Action**: Puts the computer to sleep (uses `pmset sleepnow` on macOS, `rundll32.exe powrprof.dll,SetSuspendState 0,1,0` on Windows)
 2. **Screensaver Action**: Starts the screensaver (uses `open -a ScreenSaverEngine` on macOS, `scrnsave.scr /s` on Windows)
 
 The plugin is built with TypeScript and uses the Elgato Stream Deck SDK.
