@@ -69,7 +69,8 @@ function getScreensaverCommand() {
         return "open -a ScreenSaverEngine";
     }
     else if (process.platform === "win32") {
-        return "%windir%\\system32\\scrnsave.scr /s";
+        const windir = process.env.SystemRoot || process.env.windir || "C:\\Windows";
+        return `${windir}\\system32\\scrnsave.scr /s`;
     }
     throw new Error(`Unsupported platform: ${process.platform}`);
 }
