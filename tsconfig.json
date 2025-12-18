@@ -10,8 +10,7 @@
     "declaration": false,
     "outDir": "./com.whyisjake.sleep-screensaver.sdPlugin/bin",
     "types": ["node"],
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "experimentalDecorators": false
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]

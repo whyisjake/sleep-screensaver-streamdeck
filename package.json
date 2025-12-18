@@ -5,9 +5,11 @@
   "main": "com.whyisjake.sleep-screensaver.sdPlugin/bin/plugin.js",
   "type": "module",
   "scripts": {
-    "build": "rollup -c",
-    "watch": "rollup -c -w",
-    "link": "streamdeck link com.whyisjake.sleep-screensaver.sdPlugin"
+    "build": "STREAM_DECK_VARIANT=prod rollup -c && STREAM_DECK_VARIANT=prod node tools/prepare-manifest.mjs",
+    "build:dev": "STREAM_DECK_VARIANT=dev rollup -c && STREAM_DECK_VARIANT=dev node tools/prepare-manifest.mjs",
+    "watch": "STREAM_DECK_VARIANT=dev rollup -c -w",
+    "link": "streamdeck link com.whyisjake.sleep-screensaver.sdPlugin",
+    "link:dev": "streamdeck link com.whyisjake.sleep-screensaver.dev.sdPlugin"
   },
   "keywords": [
     "streamdeck",
@@ -20,6 +22,7 @@
   "license": "MIT",
   "devDependencies": {
     "@rollup/plugin-commonjs": "^29.0.0",
+    "@rollup/plugin-replace": "^5.0.7",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-typescript": "^11.1.6",
     "@types/node": "^25.0.2",

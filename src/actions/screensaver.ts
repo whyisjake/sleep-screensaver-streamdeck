@@ -4,6 +4,7 @@ import streamDeck, {
   SingletonAction,
 } from "@elgato/streamdeck";
 import { exec } from "child_process";
+import { UUIDS } from "../ids";
 
 function getScreensaverCommand(): string {
   if (process.platform === "darwin") {
@@ -15,14 +16,16 @@ function getScreensaverCommand(): string {
   throw new Error(`Unsupported platform: ${process.platform}`);
 }
 
-@action({ UUID: "com.whyisjake.sleep-screensaver.screensaver" })
-export class ScreensaverAction extends SingletonAction {
-  override async onKeyDown(ev: KeyDownEvent<object>): Promise<void> {
+const shell = process.platform === "win32" ? "cmd.exe" : "/bin/sh";
+
+@action({ UUID: UUIDS.SCREENSAVER })
+export class ScreensaverAction extends SingletonAction<never> {
+  override async onKeyDown(ev: KeyDownEvent<never>): Promise<void> {
     streamDeck.logger.info(`Screensaver action triggered on ${process.platform}`);
 
     try {
       const command = getScreensaverCommand();
-      exec(command, { shell: true }, (error: Error | null, stdout: string, stderr: string) => {
+      exec(command, { shell }, (error: Error | null, stdout: string, stderr: string) => {
         if (error) {
           streamDeck.logger.error(`Screensaver command failed: ${error.message}`);
           return;

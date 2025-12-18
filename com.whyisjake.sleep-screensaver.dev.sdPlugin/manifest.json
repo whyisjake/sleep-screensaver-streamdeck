@@ -1,6 +1,6 @@
 {
-	"UUID": "com.whyisjake.sleep-screensaver",
-	"Name": "Sleep & Screensaver",
+	"UUID": "com.whyisjake.sleep-screensaver.dev",
+	"Name": "Sleep & Screensaver (Dev)",
 	"Version": "1.0.0.0",
 	"Author": "whyisjake",
 	"Description": "Put your computer to sleep or start the screensaver with one button press. Perfect for quickly securing your workstation or activating your screensaver with a single tap. Works on macOS and Windows.",
@@ -27,7 +27,7 @@
 	"CategoryIcon": "imgs/plugin",
 	"Actions": [
 		{
-			"UUID": "com.whyisjake.sleep-screensaver.sleep",
+			"UUID": "com.whyisjake.sleep-screensaver.dev.sleep",
 			"Name": "Sleep",
 			"Icon": "imgs/actions/sleep",
 			"Tooltip": "Put your computer to sleep",
@@ -43,7 +43,7 @@
 			]
 		},
 		{
-			"UUID": "com.whyisjake.sleep-screensaver.screensaver",
+			"UUID": "com.whyisjake.sleep-screensaver.dev.screensaver",
 			"Name": "Screensaver",
 			"Icon": "imgs/actions/screensaver",
 			"Tooltip": "Start the screensaver",

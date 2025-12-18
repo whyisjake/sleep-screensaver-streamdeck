@@ -59,7 +59,7 @@ typeof SuppressedError === "function" ? SuppressedError : function (error, suppr
 
 const BASE_PLUGIN_ID = "com.whyisjake.sleep-screensaver";
 // Value injected by rollup-replace at build time
-const VARIANT = ("prod").toLowerCase();
+const VARIANT = ("dev").toLowerCase();
 const PLUGIN_ID = VARIANT === "dev" ? `${BASE_PLUGIN_ID}.dev` : BASE_PLUGIN_ID;
 const UUIDS = {
     SLEEP: `${PLUGIN_ID}.sleep`,
