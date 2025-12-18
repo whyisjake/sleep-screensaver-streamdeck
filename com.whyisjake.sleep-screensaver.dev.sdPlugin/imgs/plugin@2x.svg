@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <rect width="512" height="512" rx="64" fill="#1a1a2e"/>
+
+  <!-- Moon (Sleep) -->
+  <path fill="#f0c420" d="M160 96a96 96 0 1 0 0 192 96 96 0 0 0 0-192zm0 174a78 78 0 0 1-18-153.84A84 84 0 0 0 199.84 192 78 78 0 0 1 160 270z"/>
+
+  <!-- Monitor (Screensaver) -->
+  <rect x="240" y="240" width="208" height="144" rx="12" fill="#0d1b2a" stroke="#4cc9f0" stroke-width="8"/>
+  <line x1="344" y1="384" x2="344" y2="416" stroke="#4cc9f0" stroke-width="8"/>
+  <line x1="296" y1="416" x2="392" y2="416" stroke="#4cc9f0" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="312" cy="296" r="12" fill="#f72585"/>
+  <circle cx="360" cy="328" r="10" fill="#7209b7"/>
+  <circle cx="392" cy="296" r="8" fill="#4361ee"/>
+  <circle cx="408" cy="344" r="6" fill="#4cc9f0"/>
+
+  <!-- Stars -->
+  <circle cx="400" cy="120" r="6" fill="#ffffff" opacity="0.7"/>
+  <circle cx="360" cy="160" r="4" fill="#ffffff" opacity="0.5"/>
+  <circle cx="440" cy="180" r="5" fill="#ffffff" opacity="0.6"/>
+  <circle cx="480" cy="140" r="3" fill="#ffffff" opacity="0.4"/>
+</svg>

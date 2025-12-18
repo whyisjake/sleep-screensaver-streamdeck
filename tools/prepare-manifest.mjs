@@ -1,4 +1,4 @@
-import { readFile, writeFile, mkdir } from 'node:fs/promises';
+import { readFile, writeFile, mkdir, cp } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 
@@ -39,6 +39,16 @@ const nameBase = 'Sleep & Screensaver';
   await mkdir(resolve(__dirname, '..', targetFolder), { recursive: true });
   await writeFile(targetManifestPath, JSON.stringify(manifest, null, '\t') + '\n', 'utf8');
   console.log(`[prepare-manifest] Wrote ${targetManifestPath} for variant: ${variant}`);
+
+  // Copy assets (imgs/) from source plugin folder so icons resolve
+  try {
+    const srcImgs = resolve(__dirname, '..', 'com.whyisjake.sleep-screensaver.sdPlugin', 'imgs');
+    const dstImgs = resolve(__dirname, '..', targetFolder, 'imgs');
+    await cp(srcImgs, dstImgs, { recursive: true, force: true });
+    console.log(`[prepare-manifest] Synced images to ${dstImgs}`);
+  } catch (e) {
+    console.warn('[prepare-manifest] Skipped copying images:', e?.message || e);
+  }
 })().catch((e) => {
   console.error('[prepare-manifest] Failed:', e);
   process.exit(1);

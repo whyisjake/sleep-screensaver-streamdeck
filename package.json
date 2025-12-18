@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "build": "STREAM_DECK_VARIANT=prod rollup -c && STREAM_DECK_VARIANT=prod node tools/prepare-manifest.mjs",
+    "build:restart": "npm run build && node tools/restart-stream-deck.mjs",
     "build:dev": "STREAM_DECK_VARIANT=dev rollup -c && STREAM_DECK_VARIANT=dev node tools/prepare-manifest.mjs",
+    "build:dev:restart": "npm run build:dev && npm run link:dev && node tools/restart-stream-deck.mjs",
     "watch": "STREAM_DECK_VARIANT=dev rollup -c -w",
     "link": "streamdeck link com.whyisjake.sleep-screensaver.sdPlugin",
     "link:dev": "streamdeck link com.whyisjake.sleep-screensaver.dev.sdPlugin"
