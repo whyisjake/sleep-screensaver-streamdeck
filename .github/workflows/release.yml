@@ -1,0 +1,50 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  build-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build plugin (prod)
+        run: npm run build
+
+      - name: Package plugin
+        run: |
+          zip -r "sleep-screensaver-${{ github.ref_name }}.sdPlugin.zip" com.whyisjake.sleep-screensaver.sdPlugin
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: sleep-screensaver-${{ github.ref_name }}
+          path: sleep-screensaver-${{ github.ref_name }}.sdPlugin.zip
+          if-no-files-found: error
+
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: sleep-screensaver-${{ github.ref_name }}.sdPlugin.zip
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
