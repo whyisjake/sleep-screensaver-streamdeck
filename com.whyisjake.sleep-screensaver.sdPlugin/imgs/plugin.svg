@@ -1,19 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
-  <rect width="256" height="256" rx="32" fill="#1a1a2e"/>
+  <!-- Moon (Sleep) - white stroke outline -->
+  <path fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" 
+        d="M80 48a48 48 0 1 0 0 96 48 48 0 0 0 0-96zm0 87a39 39 0 0 1-9-76.92A42 42 0 0 0 99.92 96 39 39 0 0 1 80 135z"/>
 
-  <!-- Moon (Sleep) -->
-  <path fill="#f0c420" d="M80 48a48 48 0 1 0 0 96 48 48 0 0 0 0-96zm0 87a39 39 0 0 1-9-76.92A42 42 0 0 0 99.92 96 39 39 0 0 1 80 135z"/>
+  <!-- Monitor (Screensaver) - white stroke outline -->
+  <rect x="120" y="120" width="104" height="72" rx="6" fill="none" stroke="#ffffff" stroke-width="6"/>
+  <line x1="172" y1="192" x2="172" y2="208" stroke="#ffffff" stroke-width="6"/>
+  <line x1="148" y1="208" x2="196" y2="208" stroke="#ffffff" stroke-width="6" stroke-linecap="round"/>
+  
+  <!-- Simple dots inside monitor -->
+  <circle cx="156" cy="148" r="4" fill="none" stroke="#ffffff" stroke-width="2"/>
+  <circle cx="180" cy="164" r="4" fill="none" stroke="#ffffff" stroke-width="2"/>
+  <circle cx="196" cy="148" r="4" fill="none" stroke="#ffffff" stroke-width="2"/>
 
-  <!-- Monitor (Screensaver) -->
-  <rect x="120" y="120" width="104" height="72" rx="6" fill="#0d1b2a" stroke="#4cc9f0" stroke-width="4"/>
-  <line x1="172" y1="192" x2="172" y2="208" stroke="#4cc9f0" stroke-width="4"/>
-  <line x1="148" y1="208" x2="196" y2="208" stroke="#4cc9f0" stroke-width="4" stroke-linecap="round"/>
-  <circle cx="156" cy="148" r="6" fill="#f72585"/>
-  <circle cx="180" cy="164" r="5" fill="#7209b7"/>
-  <circle cx="196" cy="148" r="4" fill="#4361ee"/>
-
-  <!-- Stars -->
-  <circle cx="200" cy="60" r="3" fill="#ffffff" opacity="0.7"/>
-  <circle cx="180" cy="80" r="2" fill="#ffffff" opacity="0.5"/>
-  <circle cx="220" cy="90" r="2.5" fill="#ffffff" opacity="0.6"/>
+  <!-- Stars - small simple strokes -->
+  <path d="M200 57 l0 6 M197 60 l6 0" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+  <path d="M180 78 l0 4 M178 80 l4 0" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+  <path d="M220 88 l0 5 M217.5 90.5 l5 0" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
 </svg>

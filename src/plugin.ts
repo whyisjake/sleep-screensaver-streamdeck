@@ -4,7 +4,7 @@ import { SleepAction } from "./actions/sleep";
 import { ScreensaverAction } from "./actions/screensaver";
 
 // Set up logging
-streamDeck.logger.setLevel(LogLevel.DEBUG);
+streamDeck.logger.setLevel(LogLevel.INFO);
 
 // Register actions
 streamDeck.actions.registerAction(new SleepAction());
