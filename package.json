@@ -1,6 +1,6 @@
 {
   "name": "sleep-screensaver",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Stream Deck plugin to put your Mac to sleep or start the screensaver",
   "main": "com.whyisjake.sleep-screensaver.sdPlugin/bin/plugin.js",
   "type": "module",

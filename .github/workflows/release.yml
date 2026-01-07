@@ -32,7 +32,7 @@ jobs:
 
       - name: Package plugin
         run: |
-          zip -r "sleep-screensaver-${{ github.ref_name }}.sdPlugin.zip" com.whyisjake.sleep-screensaver.sdPlugin
+          cd com.whyisjake.sleep-screensaver.sdPlugin && zip -r "../sleep-screensaver-${{ github.ref_name }}.sdPlugin.zip" . -x "*.log" -x "logs/*" -x ".DS_Store" -x "*.map"
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
