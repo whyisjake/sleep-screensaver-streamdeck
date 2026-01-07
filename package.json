@@ -11,7 +11,8 @@
     "build:dev:restart": "npm run build:dev && npm run link:dev && node tools/restart-stream-deck.mjs",
     "watch": "STREAM_DECK_VARIANT=dev rollup -c -w",
     "link": "streamdeck link com.whyisjake.sleep-screensaver.sdPlugin",
-    "link:dev": "streamdeck link com.whyisjake.sleep-screensaver.dev.sdPlugin"
+    "link:dev": "streamdeck link com.whyisjake.sleep-screensaver.dev.sdPlugin",
+    "package": "npm run build && streamdeck pack com.whyisjake.sleep-screensaver.sdPlugin && ls -lh *.streamDeckPlugin"
   },
   "keywords": [
     "streamdeck",

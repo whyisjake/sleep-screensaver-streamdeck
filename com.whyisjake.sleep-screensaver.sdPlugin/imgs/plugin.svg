@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
   <!-- Moon (Sleep) - white stroke outline -->
-  <path fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" 
+  <path fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"
         d="M80 48a48 48 0 1 0 0 96 48 48 0 0 0 0-96zm0 87a39 39 0 0 1-9-76.92A42 42 0 0 0 99.92 96 39 39 0 0 1 80 135z"/>
 
   <!-- Monitor (Screensaver) - white stroke outline -->
   <rect x="120" y="120" width="104" height="72" rx="6" fill="none" stroke="#ffffff" stroke-width="6"/>
   <line x1="172" y1="192" x2="172" y2="208" stroke="#ffffff" stroke-width="6"/>
   <line x1="148" y1="208" x2="196" y2="208" stroke="#ffffff" stroke-width="6" stroke-linecap="round"/>
-  
+
   <!-- Simple dots inside monitor -->
   <circle cx="156" cy="148" r="4" fill="none" stroke="#ffffff" stroke-width="2"/>
   <circle cx="180" cy="164" r="4" fill="none" stroke="#ffffff" stroke-width="2"/>
