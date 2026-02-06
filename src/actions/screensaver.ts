@@ -10,8 +10,9 @@ function getScreensaverCommand(): string {
   if (process.platform === "darwin") {
     return "open -a ScreenSaverEngine";
   } else if (process.platform === "win32") {
-    const windir = process.env.SystemRoot || process.env.windir || "C:\\Windows";
-    return `${windir}\\system32\\scrnsave.scr /s`;
+    // Send WM_SYSCOMMAND (0x0112) with SC_SCREENSAVE (0xF140) to HWND_BROADCAST
+    // to start the user's configured screensaver
+    return `powershell -NoProfile -Command "Add-Type -TypeDefinition 'using System;using System.Runtime.InteropServices;public class SS{[DllImport(\\\"user32.dll\\\")]public static extern int SendMessage(IntPtr h,uint m,IntPtr w,IntPtr l);}';[SS]::SendMessage([IntPtr]::new(0xFFFF),0x0112,[IntPtr]::new(0xF140),[IntPtr]::Zero)"`;
   }
   throw new Error(`Unsupported platform: ${process.platform}`);
 }
