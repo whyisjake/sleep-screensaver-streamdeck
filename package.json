@@ -1,6 +1,6 @@
 {
   "name": "sleep-screensaver",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Stream Deck plugin to put your Mac or PC to sleep or start the screensaver",
   "main": "com.whyisjake.sleep-screensaver.sdPlugin/bin/plugin.js",
   "type": "module",
@@ -12,7 +12,7 @@
     "watch": "STREAM_DECK_VARIANT=dev rollup -c -w",
     "link": "streamdeck link com.whyisjake.sleep-screensaver.sdPlugin",
     "link:dev": "streamdeck link com.whyisjake.sleep-screensaver.dev.sdPlugin",
-    "package": "npm run build && streamdeck pack com.whyisjake.sleep-screensaver.sdPlugin && ls -lh *.streamDeckPlugin"
+    "package": "npm run build && streamdeck pack com.whyisjake.sleep-screensaver.sdPlugin -f && ls -lh *.streamDeckPlugin"
   },
   "keywords": [
     "streamdeck",

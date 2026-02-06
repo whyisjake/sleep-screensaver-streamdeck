@@ -10,9 +10,10 @@ function getScreensaverCommand(): string {
   if (process.platform === "darwin") {
     return "open -a ScreenSaverEngine";
   } else if (process.platform === "win32") {
-    // Send WM_SYSCOMMAND (0x0112) with SC_SCREENSAVE (0xF140) to HWND_BROADCAST
-    // to start the user's configured screensaver
-    return `powershell -NoProfile -Command "Add-Type -TypeDefinition 'using System;using System.Runtime.InteropServices;public class SS{[DllImport(\\\"user32.dll\\\")]public static extern int SendMessage(IntPtr h,uint m,IntPtr w,IntPtr l);}';[SS]::SendMessage([IntPtr]::new(0xFFFF),0x0112,[IntPtr]::new(0xF140),[IntPtr]::Zero)"`;
+    // Use NirCmd utility or fallback to calling screensaver directly
+    // This launches the user's default screensaver from registry
+    const windir = process.env.SystemRoot || process.env.windir || "C:\\Windows";
+    return `powershell -NoProfile -WindowStyle Hidden -Command "$path = (Get-ItemProperty -Path 'HKCU:\\Control Panel\\Desktop' -Name SCRNSAVE.EXE).('SCRNSAVE.EXE'); if ($path) { Start-Process $path -ArgumentList '/s' } else { & '${windir}\\System32\\scrnsave.scr' /s }"`;
   }
   throw new Error(`Unsupported platform: ${process.platform}`);
 }

@@ -10,7 +10,9 @@ function getSleepCommand(): string {
   if (process.platform === "darwin") {
     return "pmset sleepnow";
   } else if (process.platform === "win32") {
-    return "rundll32.exe powrprof.dll,SetSuspendState 0,1,0";
+    // Use PowerShell's SetSuspendState with Standby (S3 sleep state)
+    // Standby = standard sleep mode, force=true, disableWakeEvent=true
+    return `powershell -NoProfile -WindowStyle Hidden -Command "Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.Application]::SetSuspendState([System.Windows.Forms.PowerState]::Suspend, $true, $true)"`;
   }
   throw new Error(`Unsupported platform: ${process.platform}`);
 }
