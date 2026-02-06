@@ -2,6 +2,6 @@
   "name": "sleep-screensaver-plugin",
   "type": "module",
   "dependencies": {
-    "@elgato/streamdeck": "^0.3.0"
+    "@elgato/streamdeck": "^2.0.1"
   }
 }
