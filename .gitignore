@@ -3,6 +3,7 @@ node_modules/
 
 # Build output
 *.streamDeckPlugin
+*.zip
 com.whyisjake.sleep-screensaver.sdPlugin/bin/
 com.whyisjake.sleep-screensaver.dev.sdPlugin/
 
